@@ -11,13 +11,16 @@ def play():
     if user not in choices:
         return "Invalid input"
 
+    compPick = full_word(computer)
+    userPick = full_word(user)
+
     if user == computer:
-        return f'It\'s a tie, You chose {user} and the computer chose {computer}'
+        return f'It\'s a tie, You chose {userPick} and the computer chose {compPick}'
 
     if is_win(user, computer):
-        return f'You won! You chose {user} and the computer chose {computer}'
+        return f'You won! You chose {userPick} and the computer chose {compPick}'
 
-    return 'You lost! You chose {user} and the computer chose {computer}'
+    return f'You lost! You chose {userPick} and the computer chose {compPick}'
 
 
 def is_win(player, opponent):
@@ -25,4 +28,13 @@ def is_win(player, opponent):
         return True
 
 
+def full_word(letter):
+    fullWords = ['Rock', 'Scissors', 'Paper']
+    choices = ['r', 's', 'p']
+    for index, choice in enumerate(choices):
+        if choice == letter:
+            return fullWords[index]
+
+
 print(play())
+# print(full_word('s'))
