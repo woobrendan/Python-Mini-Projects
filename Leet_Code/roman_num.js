@@ -11,36 +11,45 @@ const romanToInt = (str) => {
   }
 
   const strArr = str.split('');
-  const numOfNums = strArr.length - 1;
-  // strArr.forEach((letter, index) => {
-  //   for (const key in romanObj) {
-  //     if(letter === 'I' && strArr[index + 1] === 'V') {
-        
-  //     }
-  //     else if (key === letter) {
-  //       result += romanObj[key]
-  //     }
-  //   }
-  // })
-
   for (let i = 0; i < strArr.length; i++) {
+
     if (strArr[i] === 'I' &&  strArr[i + 1] === 'V') {
       result += 4;
-      strArr.splice(i, 2)
-      console.log('strarray', strArr)
-    } else { 
+      strArr.splice(i, 2);
+    } 
+    else if (strArr[i] === 'I' &&  strArr[i + 1] === 'X') {
+      result += 9;
+      strArr.splice(i, 2);
+    } 
+    else if (strArr[i] === 'X' &&  strArr[i + 1] === 'L') {
+      result += 40;
+      strArr.splice(i, 2);
+      i--;
+    }
+    else if (strArr[i] === 'X' &&  strArr[i + 1] === 'C') {
+      result += 90;
+      strArr.splice(i, 2);
+      i--;
+    }
+    else if (strArr[i] === 'C' &&  strArr[i + 1] === 'D') {
+      result += 400;
+      strArr.splice(i, 2);
+      i--;
+    }
+    else if (strArr[i] === 'C' &&  strArr[i + 1] === 'M') {
+      result += 900;
+      strArr.splice(i, 2);
+      i--;
+    }
+  
+    else { 
       for (const key in romanObj) {
         if (key === str[i]) {
-          result += romanObj[key]
+          result += romanObj[key];
         }
       }
     }
-
   }
-  
-
-  return result
-
+  return result;
 }
-
-console.log(romanToInt("XIV"))
+console.log(romanToInt("MDCCCLXIV"))
